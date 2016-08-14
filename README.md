@@ -8,3 +8,6 @@ A blog written in web2py.
 - Post management
 - Tags
 - Archives (currently in `by year`)
+
+#### Dependancies
+- [CommonMark-py](https://github.com/rtfd/CommonMark-py)
