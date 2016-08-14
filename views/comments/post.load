@@ -1,0 +1,19 @@
+{{if form:}}
+  {{=form}}
+{{else:}}
+  <p>
+    {{
+      sign_in_text = T("Please %s to write comment.")
+      =XML(sign_in_text % A(T("sign in"), _class="btn btn-default btn-xs", _href="/user/login?_next=/post/%s" % postid).xml())
+    }}
+  </p>
+{{pass}}
+
+<p class="blog-comments">
+  {{
+    tmp_comments=T("Comments: %s")
+  }}
+  <span>{{=tmp_comments % comments}}</span>
+</p>
+
+{{=LOAD('comments', 'reply.load', vars=dict(postid=postid, hide_reply='T'), ajax=True)}}

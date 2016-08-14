@@ -1,0 +1,75 @@
+
+{{if hide_reply == 'F':}}
+  <p class="blog-comments">
+    {{
+      tmp_comments=T("Replies: %s")
+    }}
+    <span>{{=tmp_comments % len(comments or [])}}</span>
+  </p>
+{{pass}}
+
+{{for post in comments:}}
+
+  <blockquote class="comment{{='%s%s' % ((post.reply_to or ""), post.id)}}">
+    <p>
+      <span class="comment-person">
+        {{=post.created_by.first_name}}
+      </span>
+      <span class="comment-datetime">
+        {{=post.created_on.strftime("%Y %b %d %I:%M %p")}}
+      </span>
+      {{if (auth.user_id == post.created_by) and (not post.is_deleted):}}
+        <span class="comment-reply">
+          <a class="btn btn-default btn-xs reply-button" href="#" onclick="replyComment({{=(post.reply_to or "''")}}, {{=post.id}}); return false;">{{=T("Reply")}}</a>
+          <a class="btn btn-warning btn-xs cancel-reply hidden" href="#" onclick="cancelReply(); return false;">{{=T("Cancel Reply")}}</a>
+          <a class="btn btn-danger btn-xs remove-button" href="#" onclick="removeComment({{=(post.reply_to or "''")}}, {{=post.id}}); return false;">{{=T("Remove")}}</a>
+        </span>
+      {{pass}}
+    </p>
+    <div class="comment-body">
+      {{if post.is_deleted:}}
+        {{=T('[Removed.]')}}
+      {{else:}}
+        {{=commonmarkIt(post.body)}}
+      {{pass}}
+    </div>
+
+    {{=LOAD('comments', 'reply.load', vars=dict(postid=postid, reply_to=post.id), ajax=True)}}
+  </blockquote>
+{{pass}}
+
+<script type="text/javascript">
+  function removeComment(reply_to, commentID) {
+    var main_class = '.comment' + (reply_to || "") + commentID;
+    var message = "{{=T('Do you want to remove the comment?')}}";
+    var result = confirm(message);
+    if (result) {
+      var _url = "{{=URL('comments', 'removeComment')}}";
+      $.post(_url, {"comment_id": commentID})
+      .success(function(status) {
+        var selected_comment = $(main_class);
+        selected_comment.find(".comment-body").first().html("{{=T("[Removed.]")}}");
+        selected_comment.find(".reply-button").first().remove();
+        selected_comment.find(".cancel-reply").first().remove();
+      })
+      .fail(function(error) {
+
+      });
+    }
+  }
+
+  function cancelReply() {
+    $(".cloned").remove();
+    $('input[name=reply_to]').val("");
+  }
+
+  function replyComment(replied_to, commentID) {
+    var main_class = '.comment' + (replied_to || "") + commentID;
+    $(".cloned").remove();
+    $('input[name=reply_to]').val(commentID);
+    var cloned = $(main_class).last().clone().addClass("cloned").insertBefore('.form-horizontal');
+    cloned.find(".reply-button").remove();
+    cloned.find(".cancel-reply").first().removeClass("hidden");
+    $('#postcomment_body').focus();
+  }
+</script>

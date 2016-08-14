@@ -1,0 +1,42 @@
+{{current_page = int(request.vars.page or 1)}}
+{{extend 'default/index.html'}}
+
+<h3>
+  <a href="{{=URL('default', 'post', args=record.post.id)}}">
+    {{=record.post.title}}
+  </a>
+  {{if auth.user:}}
+    <small>
+      <a href="{{=URL('default', 'createpost', args=record.post.id)}}">[edit]</a>
+    </small>
+  {{pass}}
+</h3>
+
+<div class="blog-meta">
+  <div>
+    <i class="material-icons">person</i>
+    <a href="{{=URL('default', 'index')}}" class="blog-meta-element">
+      {{=("%(first_name)s %(last_name)s" % record.auth_user) }}
+    </a>
+  </div>
+
+  <div>
+    <i class="material-icons">access_time</i>
+    <span class="blog-meta-element blog-post-datetime">
+      {{=record.post.created_on.isoformat()}}
+    </span>
+  </div>
+</div>
+
+<div class="blog-body">
+  {{=commonmarkIt(record.post.body_nobreak or "")}}
+</div>
+
+<p class="blog-tags well">
+  {{=T("Tags")}}
+  {{for each_tag in record.post.tags:}}
+    <a href="{{=URL('default', 'index', vars=dict(tag=each_tag, page=current_page))}}">{{=each_tag}}</a>
+  {{pass}}
+</p>
+
+{{=LOAD('comments','post.load', vars=dict(postid=request.args(0)),ajax=True)}}

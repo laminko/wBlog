@@ -1,0 +1,176 @@
+{{
+  left_sidebar_enabled = True
+  right_sidebar_enabled = False
+}}
+{{current_page = int(request.vars.page or 1)}}
+{{extend 'layout.html'}}
+
+
+{{if 'message' in globals():}}
+<h2>{{=message}}</h2>
+<p class="lead">{{=T('How did you get here?')}}</p>
+<ol>
+  <li>{{=T('You are successfully running web2py')}}</li>
+  <li>{{=XML(T('You visited the url %s', A(request.env.path_info,_href=request.env.path_info)))}}</li>
+  <li>{{=XML(T('Which called the function %s located in the file %s',
+    (A(request.function+'()',_href='#'),
+    A('web2py/applications/%(application)s/controllers/%(controller)s.py' % request,
+    _href=URL('admin','default','peek', args=(request.application,'controllers',request.controller+'.py'))))))}}</li>
+  <li>{{=XML(T('The output of the file is a dictionary that was rendered by the view %s',
+    A('web2py/applications/%(application)s/views/%(controller)s/index.html' % request,
+    _href=URL('admin','default','peek',args=(request.application,'views',request.controller,'index.html')))))}}</li>
+  <li>{{=T('You can modify this application and adapt it to your needs')}}</li>
+</ol>
+{{elif 'content' in globals():}}
+  {{=content}}
+{{elif request.function == "index":}}
+
+  <!-- START HERE! -->
+  {{for e, post in enumerate(posts):}}
+
+    {{if e:}}
+      <hr/>
+    {{pass}}
+
+    <h4>
+      <a href="{{=URL('default', 'post', args=post.post.id)}}">
+        {{=post.post.title}}
+      </a>
+      {{if auth.user:}}
+        <small>
+          <a href="{{=URL('default', 'createpost', args=post.post.id)}}">[edit]</a>
+        </small>
+      {{pass}}
+    </h4>
+
+    <div class="blog-meta">
+      <div>
+        <i class="material-icons">person</i>
+        <a href="{{=URL('default', 'index')}}" class="blog-meta-element">
+          {{=("%(first_name)s %(last_name)s" % post.auth_user) }}
+        </a>
+      </div>
+
+      <div>
+        <i class="material-icons">access_time</i>
+        <span class="blog-meta-element blog-post-datetime">
+          <!-- {{=post.post.created_on.strftime("%Y %b %d %I:%M %p")}} -->
+          {{=post.post.created_on.isoformat()}}
+        </span>
+      </div>
+    </div>
+
+    <div class="blog-post-body">
+      {{=commonmarkIt(post.post.body_pagebreak or "")}}
+    </div>
+
+    {{if post.post.has_pagebreak == "True":}}
+      <p>
+        <a href="{{=URL('default', 'post', args=post.post.id)}}" class="btn btn-primary">{{=T("Read more")}}</a>
+      </p>
+    {{pass}}
+
+    <p class="blog-comments">
+      {{
+        tmp_comments=T("Comments: %s")
+      }}
+      <span>{{=tmp_comments % post.comments}}</span>
+    </p>
+
+    <p class="blog-tags well">
+      {{=T("Tags")}}
+      {{for each_tag in post.post.tags:}}
+        <a href="{{=URL('default', 'index', vars=dict(tag=each_tag, page=current_page))}}">{{=each_tag}}</a>
+      {{pass}}
+    </p>
+
+  {{pass}}
+
+{{else:}}
+
+  {{include}}
+
+{{pass}}
+
+{{block left_sidebar}}
+
+  {{if hasattr(T,'get_possible_languages_info'):}}
+    <p class="language-chooser">
+      <span>
+        {{=T("Language")}}
+      </span>
+      <select name="adminlanguage" onchange="var date = new Date();cookieDate=date.setTime(date.getTime()+(100*24*60*60*1000));document.cookie='adminLanguage='+this.options[this.selectedIndex].id+'; expires='+cookieDate+'; path=/';window.location.pathname=this.options[this.selectedIndex].value;"
+        class="btn btn-default">
+        {{for langinfo in sorted([(code,info[1]) for code,info in T.get_possible_languages_info().iteritems() if (code != 'default') and (code in ['my-mm', 'en-us']) ]):}}
+          <option {{=T.accepted_language==langinfo[0] and 'selected' or ''}} {{='id='+langinfo[0]}} {{='value='+langinfo[0]}} >{{=langinfo[1]}}</option>
+        {{pass}}
+      </select>
+    </p>
+  {{pass}}
+
+  <div class="well">
+    <div class="input-append blog-searchbox">
+      <input class="span2 form-control string" id="appendedInputButton" type="text" placeholder="Search...">
+      <button class="btn btn-primary" type="button">Go!</button>
+    </div>
+
+    <br/>
+
+    <h4>{{=T("Tags")}}</h4>
+    {{block block_tags}}
+      <ul>
+      {{for each_tag in session.TAGS:}}
+        <li>
+          <a href="{{=URL('default', 'index', vars=dict(tag=each_tag.get('tag'), page=current_page))}}">
+            {{=each_tag.get('tag')}} ({{=each_tag.get('total')}})
+          </a>
+        </li>
+      {{pass}}
+      </ul>
+    {{end}}
+
+    <br/>
+
+    <h4>{{=T("Archives")}}</h4>
+    {{block block_archives}}
+      <ul>
+      {{for each_archive in session.ARCHIVES:}}
+
+        <li>
+          <a href="{{=URL('default', 'index', vars=dict(year=each_archive.year, page=current_page))}}">
+            {{=each_archive.year}} ({{=each_archive.total}})
+          </a>
+        </li>
+
+      {{pass}}
+      </ul>
+    {{end}}
+
+  </div>
+
+{{end}}
+
+{{block right_sidebar}}
+
+{{end}}
+
+{{if current_page and (request.function == "index"):}}
+<nav aria-label="...">
+  <ul class="pager">
+    {{previous_css = ""}}
+    {{if (current_page - 1) == 0:}}
+      {{previous_css = "disabled"}}
+    {{pass}}
+    <li class="previous {{=previous_css}}">
+      <a href={{=URL(vars={'page':current_page-1})}}><span aria-hidden="true">&larr;</span>{{=T('Newer')}}</a>
+    </li>
+    {{next_css = ""}}
+    {{if (current_page == session.max_pages) or (session.max_pages == 0):}}
+      {{next_css = "disabled"}}
+    {{pass}}
+    <li class="next {{=next_css}}">
+      <a href={{=URL(vars={'page':current_page+1})}}>{{=T('Older')}}<span aria-hidden="true">&rarr;</span></a>
+    </li>
+  </ul>
+</nav>
+{{pass}}
