@@ -23,6 +23,7 @@
 '``**not available**``:red (requires the Python [[guppy http://pypi.python.org/pypi/guppy/ popup]] library)': '``**not available**``:red (requires the Python [[guppy http://pypi.python.org/pypi/guppy/ popup]] library)',
 'About': 'Hakkında',
 'Access Control': 'Erişim Denetimi',
+'Admin': 'Admin',
 'admin': 'admin',
 'Administrative Interface': 'Yönetim Arayüzü',
 'Ajax Recipes': 'Ajax Tarifleri',

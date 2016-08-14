@@ -34,6 +34,7 @@
 'Add this to the search as an AND term': 'Add this to the search as an AND term',
 'Add this to the search as an OR term': 'Add this to the search as an OR term',
 'Additional code for your application': 'Additional code for your application',
+'Admin': 'စီမံရန်',
 'admin': 'စီမံ',
 'Admin language': 'စီမံသူ၏ ဘာသာစကား',
 'administrative interface': 'စီမံခန့်ခွဲရာ အင်တာဖေ့စ်',

@@ -38,6 +38,7 @@
 'Add': 'Tambah',
 'Additional code for your application': 'Tambahan kode untuk aplikasi Anda',
 'Address': 'Alamat',
+'Admin': 'Admin',
 'admin': 'admin',
 'Admin language': 'Bahasa Admin',
 'administrative interface': 'antarmuka administrative',

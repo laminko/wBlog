@@ -27,6 +27,7 @@
 'Access Control': 'Control de Acceso',
 'Add': 'Añadir',
 'additional code for your application': 'código adicional para su aplicación',
+'Admin': 'Admin',
 'admin': 'admin',
 'admin disabled because no admin password': 'admin deshabilitado por falta de contraseña',
 'admin disabled because not supported on google app engine': 'admin deshabilitado, no es soportado en GAE',

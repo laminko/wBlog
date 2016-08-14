@@ -17,6 +17,7 @@
 'About': 'About',
 'Access Control': 'Access Control',
 'admin': 'admin',
+'Admin': 'Admin',
 'Administrative Interface': 'Administrative Interface',
 'Administrative interface': 'प्रशासनिक इंटरफेस के लिए यहाँ क्लिक करें',
 'Ajax Recipes': 'Ajax Recipes',

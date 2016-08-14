@@ -33,6 +33,7 @@
 'Access Control': 'Toegangscontrole',
 'Add': 'Toevoegen',
 'additional code for your application': 'additionele code voor je applicatie',
+'Admin': 'Admin',
 'admin': 'admin',
 'admin disabled because no admin password': 'admin is uitgezet omdat er geen admin wachtwoord is',
 'admin disabled because not supported on google app engine': 'admin is uitgezet omdat dit niet ondersteund wordt op google app engine',

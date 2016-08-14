@@ -30,6 +30,7 @@
 '``**not available**``:red (requires the Python [[guppy http://pypi.python.org/pypi/guppy/ popup]] library)': '``**not available**``:red (requires the Python [[guppy http://pypi.python.org/pypi/guppy/ popup]] library)',
 'About': 'About',
 'Access Control': 'Access Control',
+'Admin': 'Admin',
 'admin': 'admin',
 'Administrative Interface': 'Administrative Interface',
 'Administrative interface': 'административный интерфейс',

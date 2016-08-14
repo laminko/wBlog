@@ -17,6 +17,7 @@
 'About': 'À propos',
 'Access Control': "Contrôle d'accès",
 'admin': 'admin',
+'Admin': 'Admin',
 'Administrative Interface': "Interface d'administration",
 'Administrative interface': "Interface d'administration",
 'Ajax Recipes': 'Recettes Ajax',

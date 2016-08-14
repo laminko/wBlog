@@ -28,6 +28,7 @@
 'Access Control': 'Řízení přístupu',
 'Add breakpoint': 'Přidat bod přerušení',
 'Additional code for your application': 'Další kód pro Vaši aplikaci',
+'Admin': 'Admin',
 'admin': 'admin',
 'Admin design page': 'Admin design page',
 'Admin language': 'jazyk rozhraní',

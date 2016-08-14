@@ -5,4 +5,6 @@ A blog written in web2py.
 #### Features
 - Upload management
 - User management (not implemented yet)
-- Blog post management
+- Post management
+- Tags
+- Archives (currently in `by year`)

@@ -34,6 +34,7 @@
 'Access Control': 'Control acces',
 'Add': 'Adaugă',
 'additional code for your application': 'cod suplimentar pentru aplicația dvs.',
+'Admin': 'Admin',
 'admin': 'admin',
 'admin disabled because no admin password': 'administrare dezactivată deoarece parola de administrator nu a fost furnizată',
 'admin disabled because not supported on google app engine': 'administrare dezactivată deoarece funcționalitatea nu e suportat pe Google App Engine',

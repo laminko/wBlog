@@ -39,6 +39,7 @@
 '``**not available**``:red (requires the Python [[guppy http://pypi.python.org/pypi/guppy/ popup]] library)': '``**not available**``:red (requires the Python [[guppy http://pypi.python.org/pypi/guppy/ popup]] library)',
 'About': 'Про додаток',
 'Access Control': 'Контроль доступу',
+'Admin': 'Admin',
 'admin': 'admin',
 'Administrative Interface': 'Адміністративний інтерфейс',
 'Ajax Recipes': 'Рецепти для Ajax',

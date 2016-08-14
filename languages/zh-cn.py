@@ -22,6 +22,7 @@
 'About application': '关于本应用程序',
 'Access Control': 'Access Control',
 'admin': 'admin',
+'Admin': 'Admin',
 'Admin is disabled because insecure channel': '管理功能(Admin)在非安全连接环境下自动关闭',
 'Admin is disabled because unsecure channel': '管理功能(Admin)在非安全连接环境下自动关闭',
 'Administrative Interface': 'Administrative Interface',

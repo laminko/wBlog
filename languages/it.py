@@ -28,6 +28,7 @@
 'Access Control': 'Controllo Accessi',
 'Add': 'Aggiungi',
 'admin': 'admin',
+'Admin': 'Admin',
 'Administrative Interface': 'Interfaccia Amministrativa',
 'Administrative interface': 'Interfaccia amministrativa',
 'Ajax Recipes': 'Ajax Recipes',

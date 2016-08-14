@@ -17,6 +17,7 @@
 'About': 'About',
 'Access Control': 'Access Control',
 'admin': 'admin',
+'Admin': 'Admin',
 'Administrative Interface': 'Administrative Interface',
 'Administrative interface': 'az adminisztrációs felületért kattints ide',
 'Ajax Recipes': 'Ajax Recipes',

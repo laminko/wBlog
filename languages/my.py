@@ -36,6 +36,7 @@
 'Access Control': 'Access Control',
 'Add': 'Tambah',
 'admin': 'admin',
+'Admin': 'Admin',
 'Admin language': 'Bahasa admin',
 'Administrator Password:': 'Kata laluan Administrator:',
 'Ajax Recipes': 'Resipi Ajax',

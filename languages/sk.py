@@ -17,6 +17,7 @@
 'About': 'About',
 'Access Control': 'Access Control',
 'admin': 'admin',
+'Admin': 'Admin',
 'Administrative Interface': 'Administrative Interface',
 'Administrative interface': 'pre administrátorské rozhranie kliknite sem',
 'Ajax Recipes': 'Ajax Recipes',

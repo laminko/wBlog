@@ -28,6 +28,7 @@
 'Add': 'Afegir',
 'Add Record': 'Afegeix registre',
 'additional code for your application': '`codi addicional per a la seva aplicació',
+'Admin': 'Admin',
 'admin': 'admin',
 'admin disabled because no admin password': 'admin inhabilitat per falta de contrasenya',
 'admin disabled because not supported on google app engine': 'admin inhabilitat, no és suportat en GAE',

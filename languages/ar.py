@@ -22,6 +22,7 @@
 '``**not available**``:red (requires the Python [[guppy http://pypi.python.org/pypi/guppy/ popup]] library)': '``**not available**``:red (requires the Python [[guppy http://pypi.python.org/pypi/guppy/ popup]] library)',
 'About': 'نبذة',
 'Access Control': 'متحكمات الوصول',
+'Admin': 'Admin',
 'admin': 'admin',
 'Administrative Interface': 'واجهة التحكم',
 'Ajax Recipes': 'وصفات أجاكس',
