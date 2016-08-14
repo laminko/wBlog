@@ -1,6 +1,6 @@
 # wBlog
 
-A blog written in web2py.
+A blog written in web2py. [Demo](https://web2py-favserv.rhcloud.com)
 
 #### Features
 - Upload management
