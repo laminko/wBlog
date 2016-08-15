@@ -7,7 +7,7 @@
   </a>
   {{if auth.user:}}
     <small>
-      <a href="{{=URL('default', 'createpost', args=record.post.id)}}">[edit]</a>
+      <a href="{{=URL('default', 'posts', args=['edit', 'post', record.post.id], user_signature=True, hash_vars=False)}}">[edit]</a>
     </small>
   {{pass}}
 </h3>

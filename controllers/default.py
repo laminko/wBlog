@@ -129,24 +129,6 @@ def contact():
     return dict(form=form)
 
 
-@auth.requires(
-    auth.has_membership('Root') or
-    auth.has_membership('Admin') or
-    auth.has_membership('Editor')
-)
-def createpost():
-    form = None
-    record = db.post(request.args(0)) or None
-    form = SQLFORM(db.post, record, deletable=True)
-    if form.process().accepted:
-        message = T("Successfully saved.")
-        if record:
-            message = T("Successfully updated.")
-        response.flash = message
-        update_tags_archives(session, db)
-    return dict(form=form)
-
-
 def post():
     post_id = request.args(0) or None
     record = db(db.post.id == post_id).select(

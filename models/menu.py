@@ -46,7 +46,9 @@ def add_admin_menu():
        auth.has_membership('Admin') or \
        auth.has_membership('Editor'):
         response.menu += [
-            (T('Create a post'), False, URL('default', 'createpost'), []),
+            (T('Create a post'), False,
+             URL('default', 'posts', args=['new', 'post'],
+                 user_signature=True, hash_vars=False), []),
             (T('Admin'), False, '#', [
                 (T('Uploads'), False, URL('default', 'uploads'), []),
                 (T('Posts'), False, URL('default', 'posts'), [])
