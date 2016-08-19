@@ -114,6 +114,7 @@
 'Errors': 'Errors',
 'export as csv file': '以逗號分隔檔(csv)格式匯出',
 'FAQ': 'FAQ',
+'Feedbacks': 'Feedbacks',
 'File not found!': 'File not found!',
 'First name': '名',
 'Forms and Validators': 'Forms and Validators',

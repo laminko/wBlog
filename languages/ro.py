@@ -168,6 +168,7 @@
 'failed to reload module': 'reîncarcare modul nereușită',
 'False': 'Neadevărat',
 'FAQ': 'Întrebări frecvente',
+'Feedbacks': 'Feedbacks',
 'file "%(filename)s" created': 'fișier "%(filename)s" creat',
 'file "%(filename)s" deleted': 'fișier "%(filename)s" șters',
 'file "%(filename)s" uploaded': 'fișier "%(filename)s" încărcat',

@@ -45,15 +45,30 @@ def add_admin_menu():
     if auth.has_membership('Root') or \
        auth.has_membership('Admin') or \
        auth.has_membership('Editor'):
+        _admin_menu =  [
+            (T('Uploads'), False, URL('default', 'uploads'), []),
+            (T('Posts'), False, URL('default', 'posts'), [])
+        ]
+
+        _user_menu = [(T('Users'), False, '#', [
+            (T('Users'), False, URL('default', 'users'), []),
+            (T('Memberships'), False, URL('default', 'memberships'), [])
+        ])]
+
+        if not auth.has_membership('Editor'):
+            _admin_menu += [
+                (T('Feedbacks'), False, URL('default', 'contacts'), []),
+            ]
+
         response.menu += [
             (T('Create a post'), False,
              URL('default', 'posts', args=['new', 'post'],
                  user_signature=True, hash_vars=False), []),
-            (T('Admin'), False, '#', [
-                (T('Uploads'), False, URL('default', 'uploads'), []),
-                (T('Posts'), False, URL('default', 'posts'), [])
-            ])
+            (T('Admin'), False, '#', _admin_menu)
         ]
+
+        if not auth.has_membership('Editor'):
+            response.menu += _user_menu
     else:
         response.menu += [
             (T('Contact'), False, URL('default', 'contact'), [])

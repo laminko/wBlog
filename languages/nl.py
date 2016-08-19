@@ -168,6 +168,7 @@
 'failed to reload module': 'niet gelukt om module te herladen',
 'False': 'Onwaar',
 'FAQ': 'FAQ',
+'Feedbacks': 'Feedbacks',
 'file "%(filename)s" created': 'bestand "%(filename)s" gemaakt',
 'file "%(filename)s" deleted': 'bestand "%(filename)s" verwijderd',
 'file "%(filename)s" uploaded': 'bestand "%(filename)s" geupload',

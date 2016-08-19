@@ -79,6 +79,42 @@ def index():
 
 @auth.requires(
     auth.has_membership('Root') or
+    auth.has_membership('Admin')
+)
+def contacts():
+    grid = SQLFORM.grid(
+        db.contact,
+        paginate=10
+    )
+    return dict(form=grid)
+
+
+@auth.requires(
+    auth.has_membership('Root') or
+    auth.has_membership('Admin')
+)
+def users():
+    grid = SQLFORM.grid(
+        db.auth_user,
+        paginate=10
+    )
+    return dict(form=grid)
+
+
+@auth.requires(
+    auth.has_membership('Root') or
+    auth.has_membership('Admin')
+)
+def memberships():
+    grid = SQLFORM.grid(
+        db.auth_membership,
+        paginate=10
+    )
+    return dict(form=grid)
+
+
+@auth.requires(
+    auth.has_membership('Root') or
     auth.has_membership('Admin') or
     auth.has_membership('Editor')
 )

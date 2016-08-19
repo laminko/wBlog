@@ -47,7 +47,8 @@
 
 }
 
-.blog-body > p > img {
+.blog-body > p > img,
+.blog-post-body > p > img {
   display: block;
   margin: 0 auto;
   width: 240px;

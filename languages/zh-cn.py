@@ -118,6 +118,7 @@
 'Errors': 'Errors',
 'export as csv file': '以CSV格式导出',
 'FAQ': 'FAQ',
+'Feedbacks': 'Feedbacks',
 'File not found!': 'File not found!',
 'First name': '名',
 'Forgot username?': '忘记用户名？',

@@ -195,6 +195,7 @@
 'extends': 'rozšiřuje',
 'failed to compile file because:': 'soubor se nepodařilo zkompilovat, protože:',
 'FAQ': 'Často kladené dotazy',
+'Feedbacks': 'Feedbacks',
 'File': 'Soubor',
 'file': 'soubor',
 'file "%(filename)s" created': 'soubor "%(filename)s" byl vytvořen',

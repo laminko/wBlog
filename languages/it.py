@@ -112,6 +112,7 @@
 'export as csv file': 'esporta come file CSV',
 'Export:': 'Esporta:',
 'FAQ': 'FAQ',
+'Feedbacks': 'Feedbacks',
 'File not found!': 'File not found!',
 'First name': 'Nome',
 'Forgot username?': 'Dimenticato lo username?',

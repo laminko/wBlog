@@ -197,6 +197,7 @@
 'extends': 'extén',
 'failed to reload module': 'la recàrrega del mòdul ha fallat',
 'FAQ': 'FAQ',
+'Feedbacks': 'Feedbacks',
 'file': 'fitxer',
 'file "%(filename)s" created': 'fitxer "%(filename)s" creat',
 'file "%(filename)s" deleted': 'fitxer "%(filename)s" eliminat',

@@ -153,6 +153,7 @@
 'exposes': 'menghadapkan',
 'extends': 'meluaskan',
 'FAQ': 'FAQ',
+'Feedbacks': 'Feedbacks',
 'File not found!': 'File not found!',
 'filter': 'menyaring',
 'First Name': 'Nama Depan',

@@ -96,6 +96,7 @@
 'Errors': 'Errors',
 'export as csv file': 'exportar como ficheiro csv',
 'FAQ': 'FAQ',
+'Feedbacks': 'Feedbacks',
 'File not found!': 'File not found!',
 'First Name': 'First Name',
 'For %s #%s': 'For %s #%s',
