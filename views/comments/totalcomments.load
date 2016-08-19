@@ -1,0 +1,6 @@
+<p class="blog-comments">
+  {{
+    tmp_comments=T("Comments: %s")
+  }}
+  <span>{{=tmp_comments % comments}}</span>
+</p>

@@ -8,6 +8,7 @@ def totalcomments():
 
 
 def post():
+    commentid = request.vars.commentid or None
     postid = request.vars.postid or None
     reply_to = request.vars.reply_to or None
     form = None
@@ -16,7 +17,10 @@ def post():
         (db.postcomment.reply_to == None)
     ).count()
     if auth.is_logged_in():
-        form = SQLFORM(db.postcomment, hidden=dict(reply_to=None))
+        record = None
+        if commentid:
+            record = db.postcomment[commentid]
+        form = SQLFORM(db.postcomment, record, hidden=dict(reply_to=None))
         if form.process().accepted:
             db.postcomment.insert(
                 post = postid,

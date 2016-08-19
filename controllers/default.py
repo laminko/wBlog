@@ -130,7 +130,7 @@ def contact():
 
 
 def post():
-    post_id = request.args(0) or None
+    post_id = request.args(0) or redirect(URL('default', 'index'))
     record = db(db.post.id == post_id).select(
         db.post.ALL,
         db.auth_user.first_name,

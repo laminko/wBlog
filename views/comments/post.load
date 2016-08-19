@@ -9,11 +9,6 @@
   </p>
 {{pass}}
 
-<p class="blog-comments">
-  {{
-    tmp_comments=T("Comments: %s")
-  }}
-  <span>{{=tmp_comments % comments}}</span>
-</p>
+{{=LOAD('comments', 'totalcomments.load', vars=dict(postid=postid))}}
 
 {{=LOAD('comments', 'reply.load', vars=dict(postid=postid, hide_reply='T'), ajax=True)}}
