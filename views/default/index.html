@@ -36,7 +36,15 @@
       <a href="{{=URL('default', 'post', args=post.post.id)}}">
         {{=post.post.title}}
       </a>
-      {{if auth.user:}}
+      {{
+        current_group_id = 0
+        try:
+          current_group_id = auth.user_groups.keys()[-1]
+        except:
+          current_group_id = 0
+      }}
+      {{pass}}
+      {{if current_group_id > 0 and current_group_id < 4:}}
         <small>
           <a href="{{=URL('default', 'posts', args=['edit', 'post', post.post.id], user_signature=True, hash_vars=False)}}">[edit]</a>
         </small>
