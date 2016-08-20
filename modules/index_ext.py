@@ -30,6 +30,17 @@ def group_by_archives(db):
     return archives
 
 
+def events_by_status(db, is_active=False):
+    simple_where = (db.eventinfo.is_active == is_active)
+    archives = db(simple_where).select(
+        db.eventinfo.id.count().with_alias('total'),
+        db.eventinfo.event_start.year().with_alias('year'),
+        groupby=db.eventinfo.event_start.year(),
+        orderby=~db.eventinfo.event_start.year()
+    )
+    return archives
+
+
 def calculate_total_pages(session, db):
     total_row = float(db(db.post.is_draft == False).count())
     return math.ceil(total_row / session.max_record_per_page)
@@ -40,3 +51,5 @@ def update_tags_archives(session, db):
     session.max_pages = calculate_total_pages(session, db)
     session.TAGS = group_by_tags(db)
     session.ARCHIVES = group_by_archives(db)
+    session.PAST_EVENTS = events_by_status(db)
+    session.EVENTS_ONGOING = events_by_status(db, True)

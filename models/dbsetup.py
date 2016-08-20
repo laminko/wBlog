@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 SYM_PAGE_BREAKER = " {LMK:PAGE-BREAK} "
 SINGLE_SPACE = " "
 
@@ -7,11 +10,11 @@ db.define_table('post',
                 Field('body', 'text'),
                 Field('body_pagebreak',
                       compute=lambda r: (
-                        r['body'] or "").split(SYM_PAGE_BREAKER)[0]),
+                          r['body'] or "").split(SYM_PAGE_BREAKER)[0]),
                 Field('body_nobreak',
                       compute=lambda r: (
-                        r['body'] or "").replace(SYM_PAGE_BREAKER,
-                                                 SINGLE_SPACE)),
+                          r['body'] or "").replace(SYM_PAGE_BREAKER,
+                                                   SINGLE_SPACE)),
                 Field('has_pagebreak',
                       compute=lambda r: SYM_PAGE_BREAKER in (r['body'] or "")),
                 Field('is_draft', 'boolean', default=False),
@@ -52,9 +55,54 @@ db.define_table('postcomment',
 
 db.define_table('contact',
                 Field('name', 'string', requires=IS_NOT_EMPTY()),
-                Field('email', 'string', requires=[IS_NOT_EMPTY(), IS_EMAIL()]),
+                Field('email', 'string', requires=[
+                      IS_NOT_EMPTY(), IS_EMAIL()]),
                 Field('description', 'text', requires=IS_NOT_EMPTY()),
                 Field('created_on', 'datetime', default=request.now,
+                      readable=False, writable=False))
+
+db.define_table('bulletin',
+                Field('title', 'string', requires=IS_NOT_EMPTY()),
+                Field('message_body', 'text', requires=IS_NOT_EMPTY()),
+                Field('message_type', 'string',
+                      default='info',
+                      requires=IS_IN_SET(('success',
+                                          'info',
+                                          'warning',
+                                          'danger',
+                                          'special'))),
+                Field('expires_on', 'datetime', default=None),
+                Field('is_active', 'boolean', default=False),
+                Field('created_on', 'datetime', default=request.now,
+                      readable=False, writable=False),
+                Field('created_by', 'reference auth_user',
+                      default=auth.user_id,
+                      readable=False, writable=False),
+                Field('modified_on', 'datetime', update=request.now,
+                      readable=False, writable=False),
+                Field('modified_by', 'reference auth_user',
+                      update=auth.user_id,
+                      readable=False, writable=False))
+
+db.define_table('eventinfo',
+                Field('title', 'string', requires=IS_NOT_EMPTY()),
+                Field('event_detail', 'text', requires=IS_NOT_EMPTY()),
+                Field('image_url', 'text'),
+                Field('location_text', 'text'),
+                Field('location_lat', 'float'),
+                Field('location_lng', 'float'),
+                Field('event_start', 'datetime'),
+                Field('event_end', 'datetime'),
+                Field('is_active', 'boolean', default=False),
+                Field('created_on', 'datetime', default=request.now,
+                      readable=False, writable=False),
+                Field('created_by', 'reference auth_user',
+                      default=auth.user_id,
+                      readable=False, writable=False),
+                Field('modified_on', 'datetime', update=request.now,
+                      readable=False, writable=False),
+                Field('modified_by', 'reference auth_user',
+                      update=auth.user_id,
                       readable=False, writable=False))
 
 db.define_table('upload',

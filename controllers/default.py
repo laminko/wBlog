@@ -78,8 +78,10 @@ def index():
         limitby=(start, end)
     )
     search_found = db(where).count()
+    bulletins = db(db.bulletin.is_active == True).select()
 
-    return dict(posts=posts, search=search, found=search_found)
+    return dict(posts=posts, search=search, found=search_found,
+                bulletins=bulletins)
 
 
 @auth.requires(
