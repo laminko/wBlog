@@ -1,4 +1,5 @@
 *.pyc
+index/*
 cache/*
 databases/*
 errors/*

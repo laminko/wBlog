@@ -36,7 +36,7 @@ def calculate_total_pages(session, db):
 
 
 def update_tags_archives(session, db):
-    session.max_record_per_page = 5.0
+    session.max_record_per_page = 10.0
     session.max_pages = calculate_total_pages(session, db)
     session.TAGS = group_by_tags(db)
     session.ARCHIVES = group_by_archives(db)

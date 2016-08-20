@@ -119,7 +119,7 @@ class WhooshBackend(SimpleBackend):
         if DEBUG: print 'after insert',fields,id
         writer = self.ix.writer()
         writer.add_document(id=unicode(id),
-                            **dict((name,unicode(fields[name]))
+                            **dict((name,unicode(fields[name].decode("utf8")))
                                    for name in self.fieldnames if name in fields))
         writer.commit()
         return True
@@ -130,7 +130,7 @@ class WhooshBackend(SimpleBackend):
             writer = self.ix.writer()
             for id in ids:
                 writer.update_document(id=unicode(id),
-                                       **dict((name,unicode(fields[name]))
+                                       **dict((name, unicode(fields[name].decode("utf8")))
                                               for name in self.fieldnames if name in fields))
             writer.commit()
         return True
@@ -149,7 +149,7 @@ class WhooshBackend(SimpleBackend):
         with self.ix.searcher() as searcher:
             for fieldname in fieldkeys:
                 parser = QueryParser(fieldname, schema=self.ix.schema)
-                query = parser.parse(unicode(fieldkeys[fieldname]))
+                query = parser.parse(unicode(fieldkeys[fieldname].decode("utf8")))
                 results = searcher.search(query,limit=limit)
                 new_ids = set(long(result['id']) for result in results)
                 if mode == 'and':
