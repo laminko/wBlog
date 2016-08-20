@@ -1,5 +1,5 @@
 import os
-from plugin_haystack import Haystack, WhooshBackend
+from plugin_haystack import Haystack # , WhooshBackend
 
 
 # index_url = os.path.join(
