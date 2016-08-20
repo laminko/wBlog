@@ -24,6 +24,7 @@ def index():
     archive_day = request.vars.day or None
     current_tag = request.vars.tag or None
     current_page = request.vars.page or None
+    search = request.vars.search or None
 
     response.title += ' | ' + T('Posts')
     if not current_page:
@@ -57,6 +58,9 @@ def index():
     else:
         response.flash = welcome_text
 
+    if search:
+        where &= hindex.search(title=search, body=search, mode="or")
+
     posts = db(where).select(
         db.post.ALL,
         db.auth_user.first_name,
@@ -73,8 +77,9 @@ def index():
         orderby=~db.post.created_on,
         limitby=(start, end)
     )
+    search_found = db(where).count()
 
-    return dict(posts=posts)
+    return dict(posts=posts, search=search, found=search_found)
 
 
 @auth.requires(

@@ -25,7 +25,7 @@ from gluon import Field
 DEBUG = True
 
 class SimpleBackend(object):
-    regex = re.compile('[\w\-]{2}[\w\-]+')
+    regex = re.compile(ur'[\w\-]{2}[\w\-]+', re.UNICODE)
     ignore = set(['and','or','in','of','for','to','from'])
     def __init__(self, table, db = None):
         self.table = table

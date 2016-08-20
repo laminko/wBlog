@@ -25,6 +25,13 @@
   {{=content}}
 {{elif request.function == "index":}}
 
+  {{if search:}}
+    <div class="well">
+      <h3>{{=XML(T("Search result(s) for <b>%s</b>") % search)}}</h3>
+      <h5>{{=T("%s record(s) found.") % found}}</h5>
+    </div>
+  {{pass}}
+
   <!-- START HERE! -->
   {{for e, post in enumerate(posts):}}
 
@@ -117,10 +124,12 @@
   {{pass}}
 
   <div class="well">
-    <div class="input-append blog-searchbox">
-      <input class="span2 form-control string" id="appendedInputButton" type="text" placeholder="Search...">
-      <button class="btn btn-primary" type="button">Go!</button>
-    </div>
+    <form action="{{URL('default', 'index')}}" method="get">
+      <div class="input-append blog-searchbox">
+          <input name="search" class="span2 form-control string" id="appendedInputButton" type="text" placeholder="Search...">
+          <button type="submit" class="btn btn-primary">Go!</button>
+      </div>
+    </form>
 
     <br/>
 
@@ -170,14 +179,14 @@
       {{previous_css = "disabled"}}
     {{pass}}
     <li class="previous {{=previous_css}}">
-      <a href={{=URL(vars={'page':current_page-1})}}><span aria-hidden="true">&larr;</span>{{=T('Newer')}}</a>
+      <a href={{=URL(vars={'page':current_page-1, 'search': search})}}><span aria-hidden="true">&larr;</span>{{=T('Newer')}}</a>
     </li>
     {{next_css = ""}}
     {{if (current_page == session.max_pages) or (session.max_pages == 0):}}
       {{next_css = "disabled"}}
     {{pass}}
     <li class="next {{=next_css}}">
-      <a href={{=URL(vars={'page':current_page+1})}}>{{=T('Older')}}<span aria-hidden="true">&rarr;</span></a>
+      <a href={{=URL(vars={'page':current_page+1, 'search': search})}}>{{=T('Older')}}<span aria-hidden="true">&rarr;</span></a>
     </li>
   </ul>
 </nav>
