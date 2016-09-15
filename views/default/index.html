@@ -189,14 +189,14 @@
       {{previous_css = "disabled"}}
     {{pass}}
     <li class="previous {{=previous_css}}">
-      <a href={{=URL(vars={'page':current_page-1, 'search': search})}}><span aria-hidden="true">&larr;</span>{{=T('Newer')}}</a>
+      <a href={{=URL(vars={'page':current_page-1, 'search': (search or '')})}}><span aria-hidden="true">&larr;</span>{{=T('Newer')}}</a>
     </li>
     {{next_css = ""}}
     {{if (current_page == session.max_pages) or (session.max_pages == 0):}}
       {{next_css = "disabled"}}
     {{pass}}
     <li class="next {{=next_css}}">
-      <a href={{=URL(vars={'page':current_page+1, 'search': search})}}>{{=T('Older')}}<span aria-hidden="true">&rarr;</span></a>
+      <a href={{=URL(vars={'page':current_page+1, 'search': (search or '')})}}>{{=T('Older')}}<span aria-hidden="true">&rarr;</span></a>
     </li>
   </ul>
 </nav>
